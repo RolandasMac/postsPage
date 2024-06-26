@@ -1,0 +1,144 @@
+.container {
+  position: relative;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container .page .toolbar {
+  margin-top: 75px;
+  position: fixed;
+  padding: 5px;
+  border-radius: 10px;
+  height: 90vh;
+  width: 10%;
+  min-width: 150px;
+}
+.container .page .toolbar > h4 {
+  color: red;
+}
+.container .page .toolbar > ul {
+  padding: 5px;
+}
+.container .page .toolbar > ul > li {
+  list-style: none;
+}
+.container .page .toolbar > ul > li:hover {
+  transform: scale(1.05);
+}
+.container .page .toolbar > ul > li:active {
+  transform: scale(0.95);
+}
+.container .page .toolbar > ul > li > a {
+  text-decoration: none;
+  color: black;
+  font-family: "Times New Roman";
+  font-size: 20px;
+  font-weight: 500;
+}
+.container .content {
+  margin: 75px 0 0 200px;
+  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .content .apost {
+  align-self: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 98%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .content .apost img {
+  object-fit: contain;
+  height: 150px;
+}
+.container .content .apost:hover {
+  transform: scale(1.01);
+}
+.container .content .apost:active {
+  overflow: hidden;
+  transform: scale(0.99);
+}
+.container .content .apost p {
+  text-wrap: wrap;
+}
+.container .content .apost h4 {
+  color: red;
+  overflow: hidden;
+  word-wrap: break-word !important;
+}
+.container .content .apost .fav {
+  font-size: 36px;
+  color: orange;
+}
+.container .content .postForm1 {
+  position: relative;
+  padding: 30px;
+}
+.container .content .postForm1 .errmsg {
+  padding: 0 5px;
+  border-radius: 5px;
+  background-color: red;
+}
+.container .content .postForm1 .succmsg {
+  padding: 0 5px;
+  border-radius: 5px;
+  background-color: lightgreen;
+}
+.container .content .message {
+  position: absolute;
+  top: 10px;
+}
+.container .content .dnone {
+  display: none;
+}
+.container .content .postForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.container .content .postForm div {
+  display: flex;
+  flex-direction: column;
+}
+.container .content .postFormError input {
+  border: 2px solid red !important;
+}
+.container .content .postFormError textarea {
+  border: 2px solid red !important;
+}
+.container .pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.container .pages .pag {
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .pages .pag:hover {
+  transform: scale(1.05);
+}
+.container .pages .pag:active {
+  transform: scale(0.95);
+}
+.container .pages .active {
+  background-color: lightgreen;
+}
+.container .pages .numberinput {
+  padding: 0 0px;
+  border-radius: 10px;
+  height: 30px;
+  outline: none;
+  border: none;
+  width: 50px;
+}
+
+/*# sourceMappingURL=style.css.map */
