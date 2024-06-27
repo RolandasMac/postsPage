@@ -52,16 +52,10 @@ const InputWraper = styled.div`
     }
 `
 
-
-
 function LoginComponent(){
-
     const {logged, setLogged} = useStore();
-
     const message = useRef(null);
-
     const navigate = useNavigate();
-
     const {querryParams,setQuerryParams} = useStore();
 
     function login(e){
@@ -75,7 +69,6 @@ function LoginComponent(){
                 loginData[key] = value;
             }
             form.reset();
-            // console.log(postData);
             http.post('http://167.99.138.67:1111/login', loginData)
                 .then((res)=>{
                     if(res.success){
@@ -103,7 +96,6 @@ function LoginComponent(){
                     }
                 })
         }else{
-            // alert("Veikia");
             form.classList.add('postFormError');
             setTimeout(()=>{
                 form.classList.remove('postFormError');
@@ -127,13 +119,9 @@ function LoginComponent(){
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" placeholder="Password" name="password" required/>
                     </InputWraper>
-                    {/*<button onClick={login}>Login</button>*/}
-
                     <Button onClick={login} color={"lightGreen"}>Login</Button>
                     <span>You don't have a login?</span>
                     <span className="register" onClick={register}>Register!</span>
-
-
             </LoginForm>
         </LoginWraper>
     )

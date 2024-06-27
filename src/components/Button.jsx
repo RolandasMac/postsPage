@@ -17,11 +17,7 @@ const StyledButton = styled.button`
         transform: scale(.95);
     }
 `
-
-
 function Button(props) {
-
-
     return(
         <StyledButton {...props}>
         </StyledButton>

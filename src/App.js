@@ -15,9 +15,6 @@ import SinglePostByIdPage from "./pages/SinglePostByIdPage";
 
 function App() {
 
-
-
-
   return (
     <>
         <Routes>
@@ -35,7 +32,6 @@ function App() {
 
             </Route>
         </Routes>
-
     </>
   );
 }

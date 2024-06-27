@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
   header {
-
   }
 
   .page {
@@ -22,18 +21,14 @@
 
       & > ul {
         padding: 5px;
-
         & > li {
           list-style: none;
-
           &:hover {
             transform: scale(1.05);
           }
-
           &:active {
             transform: scale(.95);
           }
-
           & > a {
             text-decoration: none;
             color: black;
@@ -46,13 +41,11 @@
     }
   }
   .content{
-    //border: 3px solid green;
     margin:75px 0 0 200px;
     padding: 10px 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-
     .apost{
       align-self: center;
       border: 1px solid black;
@@ -63,14 +56,6 @@
       img{
         object-fit: contain;
         height: 150px;
-        //width: 100px;
-      }
-      &:hover{
-        transform: scale(1.01);
-      }
-      &:active{
-        overflow: hidden;
-        transform: scale(.99);
       }
       p{
         text-wrap: wrap;
@@ -80,17 +65,33 @@
         overflow: hidden;
         word-wrap: break-word!important;
       }
+      .id, .username{
+        display: inline-block;
+        color: red;
+        font-weight: bold;
+        margin: 0;
+        &:hover{
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+        &:active{
+          transform: scale(.95);
+        }
+      }
       .fav{
-        font-size: 36px;
-        color: orange;
+        font-size: 56px;
+        &:hover{
+          transform: scale(1.05);
+        }
+        &:active{
+          transform: scale(.95);
+        }
       }
     }
 
     .postForm1{
       position: relative;
       padding: 30px;
-
-
       .errmsg{
         padding: 0 5px;
         border-radius: 5px;
@@ -105,35 +106,29 @@
     .message{
       position: absolute;
       top: 10px;
-
     }
     .dnone{
       display: none;
     }
-
     .postForm {
       display: flex;
       flex-direction: column;
       gap: 10px;
-
       div {
         display: flex;
         flex-direction: column;
       }
 
     }
-
     .postFormError {
       input {
         border: 2px solid red !important;
       }
-
       textarea {
         border: 2px solid red !important;
       }
     }
   }
-
   .pages{
     width: 100%;
     display: flex;
@@ -161,13 +156,11 @@
       padding: 0 0px;
       border-radius: 10px;
       height: 30px;
-
       outline: none;
       border: none;
       width: 50px;
     }
   }
-
 }
 
 

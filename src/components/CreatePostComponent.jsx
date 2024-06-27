@@ -45,19 +45,13 @@ const InputWraper = styled.div`
         }
 `
 
-
-
 function CreatePostComponent(){
-
-
     const message = useRef(null);
     const [data,setData]=useState({});
 
     function createPost(e){
         e.preventDefault();
         const form = e.currentTarget.parentElement;
-        // let x = sessionStorage.getItem("secretKey")
-        // console.log(x)
         if (form.checkValidity()) {
             const formData = new FormData(form);
             let postData = data;
@@ -65,7 +59,6 @@ function CreatePostComponent(){
             for (const [key, value] of formData) {
                 postData[key] = value;
             }
-            // form.reset();
             setData(postData);
             console.log(postData);
             http.post('http://167.99.138.67:1111/createpost', postData)
@@ -90,9 +83,8 @@ function CreatePostComponent(){
                             message.current.textContent = "";
                         },3000)
                     }
-
                 })
-
+            form.reset();
         } else {
             form.classList.add('postFormError');
             setTimeout(() => {
@@ -100,8 +92,6 @@ function CreatePostComponent(){
             }, 100000)
         }
     }
-
-
 
     return(
         <Wraper>
@@ -120,7 +110,6 @@ function CreatePostComponent(){
                     <textarea id="description" placeholder="Post description" name="description" rows="4" cols="50"
                            required/>
                 </InputWraper>
-                {/*<button onClick={register}>Register</button>*/}
                 <Button onClick={createPost} color={"lightGreen"}>Create post</Button>
             </CreatePostForm>
 

@@ -46,19 +46,12 @@ const InputWraper = styled.div`
         }
 `
 
-
-
 function UpdatePostComponent({post, location}){
-
-
     const message = useRef(null);
-
     const navigate = useNavigate();
-
     function updatePost(e){
         e.preventDefault();
         const form = e.currentTarget.parentElement;
-
         if (form.checkValidity()) {
             const formData = new FormData(form);
             let postData = {}
@@ -66,13 +59,9 @@ function UpdatePostComponent({post, location}){
             for (const [key, value] of formData) {
                 postData[key] = value;
             }
-            // form.reset();
-            // setData(postData);
-            // console.log(postData);
             http.post('http://167.99.138.67:1111/updatepost', postData)
                 .then((res) => {
                     if(res.success){
-
                         message.current.classList.remove('dnone')
                         message.current.classList.add('succmsg');
                         message.current.textContent = res.message;
@@ -93,9 +82,7 @@ function UpdatePostComponent({post, location}){
                             message.current.textContent = "";
                         },3000)
                     }
-
                 })
-
         } else {
             form.classList.add('postFormError');
             setTimeout(() => {
@@ -104,14 +91,10 @@ function UpdatePostComponent({post, location}){
         }
     }
 
-
-
     return(
         <Wraper>
             <CreatePostForm action="" className="postForm1">
                 <p className="message dnone" ref={message}>Conecting...</p>
-
-
                 <InputWraper>
                     <input type="text" name="id" value={post.id} readOnly/>
                     <label htmlFor="title">Post title</label>
@@ -127,10 +110,8 @@ function UpdatePostComponent({post, location}){
                     <textarea id="description" placeholder="Post description" name="description" defaultValue={post.description} rows="4" cols="50"
                               required/>
                 </InputWraper>
-                {/*<button onClick={register}>Register</button>*/}
                 <Button onClick={updatePost} color={"lightGreen"}>Update post</Button>
             </CreatePostForm>
-
         </Wraper>
     )
 }

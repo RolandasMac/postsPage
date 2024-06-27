@@ -53,13 +53,6 @@
   object-fit: contain;
   height: 150px;
 }
-.container .content .apost:hover {
-  transform: scale(1.01);
-}
-.container .content .apost:active {
-  overflow: hidden;
-  transform: scale(0.99);
-}
 .container .content .apost p {
   text-wrap: wrap;
 }
@@ -68,9 +61,27 @@
   overflow: hidden;
   word-wrap: break-word !important;
 }
+.container .content .apost .id, .container .content .apost .username {
+  display: inline-block;
+  color: red;
+  font-weight: bold;
+  margin: 0;
+}
+.container .content .apost .id:hover, .container .content .apost .username:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.container .content .apost .id:active, .container .content .apost .username:active {
+  transform: scale(0.95);
+}
 .container .content .apost .fav {
-  font-size: 36px;
-  color: orange;
+  font-size: 56px;
+}
+.container .content .apost .fav:hover {
+  transform: scale(1.05);
+}
+.container .content .apost .fav:active {
+  transform: scale(0.95);
 }
 .container .content .postForm1 {
   position: relative;

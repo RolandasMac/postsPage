@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 
 
 function Pagination({filteredPostsCount}){
-    // const {posts, setPosts} = useStore();
     const {skip, setSkip} = useStore();
     const {limit,setLimit} = useStore();
     const {currentPage, setCurrentPage} = useStore();
@@ -13,16 +12,9 @@ function Pagination({filteredPostsCount}){
     const navigate = useNavigate();
     const {querryParams,setQuerryParams} = useStore();
 
-
-
-
     function createPaginationElements({limit,skip,currentpage}){
-        // console.log(limit,skip,currentpage)
         let pag = [];
-        // let currentpage = skip/limit+1;
-        // let currentpage = 2
         let totalPages = Math.ceil(filteredPostsCount/limit);
-        // let limitinpage = arr.limit;
         for(let i = 1; i<=totalPages;i++){
             if(i===Number(currentpage)){
                 pag.push(
@@ -41,14 +33,9 @@ function Pagination({filteredPostsCount}){
                     <div key={i} className="pag" onClick={()=>alert("Veikia")}>{"...>"}</div>
                 )
             }
-
         }
         setPages(pag)
-        // console.log(pag)
     }
-
-
-    // const [tim,setTim]=useState(0)
 
     useEffect(() => {
 
@@ -57,27 +44,21 @@ function Pagination({filteredPostsCount}){
         for (let param of searchParams) {
             params[param[0]] = param[1];
         }
-        // alert(params.limit)
         setQuerryParams({...querryParams,...params});
-        // console.log(params, querryParams);
         createPaginationElements(params);
     }, [limit, skip, currentPage, filteredPostsCount]);
 
     function changeLimit(num){
-
-        // const allPostsCount = posts.length;
         const currentPageCount = Math.ceil((skip+1)/num)
         const newSkip = Math.floor(num*(currentPageCount-1));
         setLimit(num);
         setSkip(newSkip);
         setCurrentPage(currentPageCount);
-
         navigate(`?skip=${newSkip}&limit=${num}&currentpage=${currentPageCount}&username=${querryParams.username}&timestampfrom=${querryParams.timestampfrom}&timestampto=${querryParams.timestampto}&titlestring=${querryParams.titlestring}`)
     }
 
     function getposts(page){
         let skiped = page*limit-limit;
-        // alert(limit);
         setCurrentPage(page);
         setSkip(skiped);
         setLimit(limit);
@@ -86,7 +67,6 @@ function Pagination({filteredPostsCount}){
 
     return(
         <div className="pages">
-            {/*<h1>Limit: {recipes.limit}, Skip: {recipes.skip} Total: {recipes.total}</h1>*/}
             {pages}
             <select className="numberinput" onChange={(event) => {
                 changeLimit(event.currentTarget.value)
@@ -98,7 +78,6 @@ function Pagination({filteredPostsCount}){
                 <option value="100">100</option>
 
             </select>
-            {/*<h3>{querryParams.limit}</h3>*/}
         </div>
     )
 }

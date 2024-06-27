@@ -1,8 +1,6 @@
 import { create } from 'zustand'
-import {useState} from "react";
 
 const useStore = create((set) => ({
-
 
     logged:null,
     setLogged: (user) => set((state) => ({ logged: user })),
@@ -18,7 +16,6 @@ const useStore = create((set) => ({
         titlestring: ""
     },
     setQuerryParams:(data) => set((state) => ({ querryParams: data})),
-
     skip:0,
     setSkip:(data) => set((state) => ({ skip: data})),
     limit:10,
@@ -29,7 +26,10 @@ const useStore = create((set) => ({
     setPages:(data) => set((state) => ({ pages: data})),
     favorites:localStorage.getItem("favorites")?JSON.parse(localStorage.getItem("favorites")):[],
     setFavorites:(data) => set((state) => ({ favorites: data})),
-
+    localPosts:[],
+    setLocalPosts:(data) => set((state) => ({ localPosts: data})),
+    filteredPostsCount:0,
+    setFilteredPostsCount:(data) => set((state) => ({ filteredPostsCount: data})),
 }))
 
 export default useStore;

@@ -21,16 +21,6 @@ let StyledHeader = styled.div`
     border-radius: 10px;
     margin: 0;
     z-index: 1000;
-     .searchbar {
-         //position: fixed;
-        //width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-        align-items: baseline;
-        gap: 10px;       
-    }
-
     & > div > a {
         font-size: 24px;
         text-decoration: none;
@@ -55,7 +45,6 @@ let StyledHeader = styled.div`
             transform: scale(1.05);
             cursor: pointer;
         }
-
         &:active, .login, .logout{
             transform: scale(.95);
         }
@@ -63,17 +52,13 @@ let StyledHeader = styled.div`
        
     `;
 
-
 function Header(props){
-
     const {logged,setLogged}=useStore();
-
     const navigate = useNavigate();
 
     useEffect(()=>{
         const loginName = JSON.parse(sessionStorage.getItem('logged'));
         setLogged(loginName);
-        // alert(loginName);
     },[])
 
     function login(){
@@ -84,7 +69,6 @@ function Header(props){
         sessionStorage.removeItem('logged');
         setLogged(null)
     }
-
     return(
         <StyledHeader {...props}>
             <div className="searchbar d-none">
@@ -93,7 +77,6 @@ function Header(props){
             </div>
             {logged!==null&&<span>Logged as: {logged}</span>}
             {logged === null ? <span className="login" onClick={login}>Login</span> : <span className="logout" onClick={logout}>Logout</span>}
-
         </StyledHeader>
     )
 }

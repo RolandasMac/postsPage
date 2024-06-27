@@ -35,11 +35,7 @@ const InputWraper = styled.div`
     }
 `
 
-
-
 function RegisterComponent(){
-
-
     const message = useRef(null);
     const [data,setData]=useState({});
 
@@ -80,14 +76,10 @@ function RegisterComponent(){
                                 message.current.textContent = "";
                             },3000)
                         }
-
                     })
-
-
             } else {
                 alert('Password do\'t match')
             }
-
         } else {
             form.classList.add('postFormError');
             setTimeout(() => {
@@ -95,8 +87,6 @@ function RegisterComponent(){
             }, 3000)
         }
     }
-
-
 
     return(
         <RegisterWraper>
@@ -115,10 +105,8 @@ function RegisterComponent(){
                     <input type="password" id="confPassword" placeholder="Confirm password" name="passwordTwo"
                            required/>
                 </InputWraper>
-                {/*<button onClick={register}>Register</button>*/}
                 <Button onClick={register} color={"lightGreen"}>Register</Button>
             </RegisterForm>
-
         </RegisterWraper>
     )
 }

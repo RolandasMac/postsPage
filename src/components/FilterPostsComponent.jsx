@@ -3,7 +3,6 @@ import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 import useStore from "../store/store";
 
-
 const Wraper = styled.div`
     padding: 20px 0 ;
     border-radius: 10px;
@@ -12,26 +11,6 @@ const Wraper = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 10px;
-`
-const LoginForm = styled.form`
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    .register{
-        color: red;
-        text-decoration-line: underline;
-        font-size: 16px;
-        &:hover {
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-
-        &:active, .login, .logout{
-            transform: scale(.95);
-        }
-    }
 `
 const InputWraper = styled.div`
     display: flex;
@@ -50,44 +29,26 @@ const InputWraper = styled.div`
     }
 `
 
-
-
-
-
 function FilterPostsComponent() {
     const navigate = useNavigate();
-    const {querryParams,setQuerryParams} = useStore();
-    const {skip, setSkip} = useStore();
-    const {limit,setLimit} = useStore();
-    const {currentPage, setCurrentPage} = useStore();
+    const {querryParams,setQuerryParams,skip,setSkip,limit,setLimit,currentPage, setCurrentPage} = useStore();
 
     const convertDateToTimestamp = (dateString) => {
-        // Create a Date object
         const date = new Date(dateString);
-
-        // Get the timestamp in milliseconds
         const timestamp = date.getTime();
-
         return timestamp;
     };
 
-
-
-
     function filter(e){
         e.preventDefault();
-        // alert("Filter veikia")
         const form = e.currentTarget.parentElement;
         const formData = new FormData(form);
         let filterData = {username:"",titlestring:"",timestampfrom:"",timestampto:""};
         for (const [key, value] of formData) {
             filterData[key] = value;
         }
-        // alert(filterData.timestampto!=="")
         filterData.timestampfrom!==""?filterData.timestampfrom = convertDateToTimestamp(filterData.timestampfrom):filterData.timestampfrom ="";
         filterData.timestampto!==""?filterData.timestampto = convertDateToTimestamp(filterData.timestampto):filterData.timestampto ="";
-
-        // console.log(convertDateToTimestamp(filterData.timestampfrom));
 
         const params = {
             currentpage: "1",
@@ -104,9 +65,28 @@ function FilterPostsComponent() {
         setQuerryParams(params);
 
         navigate(`/posts?skip=0&limit=10&currentpage=1&username=${filterData.username}&timestampfrom=${filterData.timestampfrom}&timestampto=${filterData.timestampto}&titlestring=${filterData.titlestring}`)
-        form.reset()
     }
 
+    function cancelfilter(e){
+        e.preventDefault();
+        const form = e.currentTarget.parentElement;
+        const params = {
+            currentpage: "1",
+            limit: "10",
+            skip: "0",
+            username: "",
+            timestampfrom: "",
+            timestampto: "",
+            titlestring: ""
+        }
+        setCurrentPage(params.currentpage);
+        setSkip(params.skip);
+        setLimit(params.limit);
+        setQuerryParams(params);
+
+        navigate(`/posts?skip=0&limit=10&currentpage=1&username=&timestampfrom=&timestampto=&titlestring=`);
+        form.reset();
+    }
 
     return(
         <Wraper>
@@ -128,10 +108,10 @@ function FilterPostsComponent() {
                     <input id="titlestring" type="text" name="titlestring"/>
                 </InputWraper>
                 <Button onClick={(event)=>filter(event)} color={"lightGreen"}>Filter</Button>
+                <Button onClick={(event)=>cancelfilter(event)} color={"lightGreen"}>Get all posts</Button>
 
             </form>
         </Wraper>
-
     )
 }
 
