@@ -52,43 +52,51 @@ function CreatePostComponent(){
     function createPost(e){
         e.preventDefault();
         const form = e.currentTarget.parentElement;
-        if (form.checkValidity()) {
-            const formData = new FormData(form);
-            let postData = data;
-            postData.secretKey = JSON.parse(sessionStorage.getItem("secretKey"));
-            for (const [key, value] of formData) {
-                postData[key] = value;
+
+        if(JSON.parse(sessionStorage.getItem("secretKey"))!==null){
+            if (form.checkValidity()) {
+                const formData = new FormData(form);
+                let postData = data;
+                postData.secretKey = JSON.parse(sessionStorage.getItem("secretKey"));
+                for (const [key, value] of formData) {
+                    postData[key] = value;
+                }
+                setData(postData);
+                http.post('http://167.99.138.67:1111/createpost', postData)
+                    .then((res) => {
+                        console.log(res);
+                        if(res.success){
+                            message.current.classList.remove('dnone')
+                            message.current.classList.add('succmsg');
+                            message.current.textContent = res.message;
+                            setTimeout(()=>{
+                                message.current.classList.add('dnone')
+                                message.current.classList.remove('succmsg');
+                                message.current.textContent = "";
+                            },1000)
+                        }else{
+                            message.current.classList.remove('dnone')
+                            message.current.classList.add('errmsg');
+                            message.current.textContent = res.message?res.message:"Something is wrong";
+                            setTimeout(()=>{
+                                message.current.classList.add('dnone')
+                                message.current.classList.remove('succmsg');
+                                message.current.textContent = "";
+                            },1000)
+                        }
+                    })
+                form.reset();
+            } else {
+                form.classList.add('postFormError');
+                setTimeout(() => {
+                    form.classList.remove('postFormError');
+                }, 1000)
             }
-            setData(postData);
-            http.post('http://167.99.138.67:1111/createpost', postData)
-                .then((res) => {
-                    if(res.success){
-                        message.current.classList.remove('dnone')
-                        message.current.classList.add('succmsg');
-                        message.current.textContent = res.message;
-                        setTimeout(()=>{
-                            message.current.classList.add('dnone')
-                            message.current.classList.remove('succmsg');
-                            message.current.textContent = "";
-                        },1000)
-                    }else{
-                        message.current.classList.remove('dnone')
-                        message.current.classList.add('errmsg');
-                        message.current.textContent = res.message?res.message:"Something is wrong";
-                        setTimeout(()=>{
-                            message.current.classList.add('dnone')
-                            message.current.classList.remove('succmsg');
-                            message.current.textContent = "";
-                        },1000)
-                    }
-                })
-            form.reset();
-        } else {
-            form.classList.add('postFormError');
-            setTimeout(() => {
-                form.classList.remove('postFormError');
-            }, 100000)
+        }else{
+            alert("You are not logged in!");
         }
+
+
     }
 
     return(
