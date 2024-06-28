@@ -25,7 +25,7 @@ function FavoritesPostsPage() {
     return (
         <div className=' d-flex flex-column gap-2'>
             <FilterPostsComponent></FilterPostsComponent>
-            {localPosts.length>0&&<PaginationComponent filteredPostsCount={filteredPostsCount}></PaginationComponent>}
+            {localPosts.length>=0&&<PaginationComponent filteredPostsCount={filteredPostsCount}></PaginationComponent>}
             {localPosts.map((cur, index)=>{
                 return <PostsComponent key={cur.id} post={cur}/>
             })}
