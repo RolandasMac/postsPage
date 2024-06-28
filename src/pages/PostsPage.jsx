@@ -7,8 +7,8 @@ import PaginationComponent from "../components/pagination/PaginationComponent";
 import FilterPostsComponent from "../components/FilterPostsComponent";
 
 function PostsPage() {
-    const {posts, setPosts,localPosts, setLocalPosts,querryParams,setQuerryParams,filteredPostsCount, setFilteredPostsCount} = useStore();
-    const location = useLocation();
+    const { setPosts,localPosts,filteredPostsCount} = useStore();
+
 
     useEffect(()=>{
         http.get('http://167.99.138.67:1111/getallposts')
@@ -17,28 +17,6 @@ function PostsPage() {
             })
     },[])
 
-    useEffect(() => {
-        if(posts.length > 0){
-            const searchParams = new URLSearchParams(location.search);
-            let params = {};
-            for (let param of searchParams) {
-                params[param[0]] = param[1];
-            }
-            const newfilteredPosts = posts.filter((cur,index)=>{
-                return (
-                        (params.username!==""?cur.username===params.username:cur)
-                        && (params.titlestring!==""?(cur.title.toLowerCase()).includes((params.titlestring).toLowerCase()):cur)
-                        && (params.timestampfrom!==""?cur.timestamp>=params.timestampfrom:cur)
-                        && (params.timestampto!==""?cur.timestamp<=params.timestampto:cur)
-                )
-            })
-            setFilteredPostsCount(newfilteredPosts.length)
-            let newPosts = newfilteredPosts.filter((post,index) => {
-                return index>=params.skip&&index<Number(params.skip)+Number(params.limit);
-            })
-            setLocalPosts(newPosts);
-        }
-    }, [querryParams,posts]);
     return (
         <div className='d-flex flex-column gap-2'>
             <FilterPostsComponent></FilterPostsComponent>

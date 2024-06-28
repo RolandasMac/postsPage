@@ -60,11 +60,9 @@ function CreatePostComponent(){
                 postData[key] = value;
             }
             setData(postData);
-            console.log(postData);
             http.post('http://167.99.138.67:1111/createpost', postData)
                 .then((res) => {
                     if(res.success){
-                        console.log(res);
                         message.current.classList.remove('dnone')
                         message.current.classList.add('succmsg');
                         message.current.textContent = res.message;
@@ -72,7 +70,7 @@ function CreatePostComponent(){
                             message.current.classList.add('dnone')
                             message.current.classList.remove('succmsg');
                             message.current.textContent = "";
-                        },3000)
+                        },1000)
                     }else{
                         message.current.classList.remove('dnone')
                         message.current.classList.add('errmsg');
@@ -81,7 +79,7 @@ function CreatePostComponent(){
                             message.current.classList.add('dnone')
                             message.current.classList.remove('succmsg');
                             message.current.textContent = "";
-                        },3000)
+                        },1000)
                     }
                 })
             form.reset();

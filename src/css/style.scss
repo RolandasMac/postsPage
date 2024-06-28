@@ -82,6 +82,7 @@
         font-size: 56px;
         &:hover{
           transform: scale(1.05);
+          cursor: pointer;
         }
         &:active{
           transform: scale(.95);
@@ -138,12 +139,13 @@
       border: 1px solid black;
       border-radius: 10px;
       height: 30px;
-      width: 30px;
+      min-width: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
       &:hover{
         transform: scale(1.05);
+        cursor: pointer;
       }
       &:active{
         transform: scale(.95);

@@ -65,13 +65,12 @@ function UpdatePostComponent({post, location}){
                         message.current.classList.remove('dnone')
                         message.current.classList.add('succmsg');
                         message.current.textContent = res.message;
-                        console.log(location)
                         setTimeout(()=>{
                             message.current.classList.add('dnone')
                             message.current.classList.remove('succmsg');
                             message.current.textContent = "";
                             navigate(location.pathname+location.search)
-                        },3000)
+                        },1000)
                     }else{
                         message.current.classList.remove('dnone')
                         message.current.classList.add('errmsg');
@@ -80,7 +79,7 @@ function UpdatePostComponent({post, location}){
                             message.current.classList.add('dnone')
                             message.current.classList.remove('succmsg');
                             message.current.textContent = "";
-                        },3000)
+                        },1000)
                     }
                 })
         } else {

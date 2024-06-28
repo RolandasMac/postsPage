@@ -79,6 +79,7 @@
 }
 .container .content .apost .fav:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 .container .content .apost .fav:active {
   transform: scale(0.95);
@@ -129,13 +130,14 @@
   border: 1px solid black;
   border-radius: 10px;
   height: 30px;
-  width: 30px;
+  min-width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .container .pages .pag:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 .container .pages .pag:active {
   transform: scale(0.95);

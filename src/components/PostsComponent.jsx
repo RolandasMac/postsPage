@@ -12,7 +12,9 @@ function PostsComponent({post}){
     let postsByName = useNavigate()
     const message = useRef(null);
     function navigate(){
-        postsByName('/getuserposts/'+post.username)
+        // postsByName('/getuserposts/'+post.username)
+        postsByName(`/getuserposts/${post.username}?skip=0&limit=10&currentpage=1&username=&timestampfrom=&timestampto=&titlestring=`)
+        // /favposts
     }
     function navtoid(e){
         e.stopPropagation();
@@ -55,7 +57,7 @@ function PostsComponent({post}){
             setFavorites(newFav);
             localStorage.setItem("favorites", JSON.stringify(newFav));
         }else{
-            console.log(favorites)
+            // console.log(favorites)
             let newFav = favorites.filter(cur => cur !== id)
             setFavorites(newFav)
             localStorage.setItem("favorites", JSON.stringify(newFav));

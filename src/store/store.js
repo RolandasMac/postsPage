@@ -16,12 +16,6 @@ const useStore = create((set) => ({
         titlestring: ""
     },
     setQuerryParams:(data) => set((state) => ({ querryParams: data})),
-    skip:0,
-    setSkip:(data) => set((state) => ({ skip: data})),
-    limit:10,
-    setLimit:(data) => set((state) => ({ limit: data})),
-    currentPage:1,
-    setCurrentPage:(data) => set((state) => ({ currentPage: data})),
     pages:[],
     setPages:(data) => set((state) => ({ pages: data})),
     favorites:localStorage.getItem("favorites")?JSON.parse(localStorage.getItem("favorites")):[],
