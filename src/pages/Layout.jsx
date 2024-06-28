@@ -42,7 +42,7 @@ function Layout(props) {
                         <li>{<Link to='/home' >Home</Link>}</li>
                         <li>{<Link to={`/posts?skip=${querryParams.skip}&limit=${querryParams.limit}&currentpage=${querryParams.currentpage}&username=${querryParams.username}&timestampfrom=${querryParams.timestampfrom}&timestampto=${querryParams.timestampto}&titlestring=${querryParams.titlestring}`}>Posts</Link>}</li>
                         <li>{<Link to='/cteatepost' className='linkText'>Create post</Link>}</li>
-                        <li>{<Link to='/favposts?skip=0&limit=10&currentpage=1&username=&timestampfrom=&timestampto=&titlestring=' className='linkText'>Favorite posts<span>{`(${favorites.length})`}</span></Link>}</li>
+                        <li>{<Link to={`/favposts?skip=0&limit=10&currentpage=1&username=${querryParams.username}&timestampfrom=${querryParams.timestampfrom}&timestampto=${querryParams.timestampto}&titlestring=${querryParams.titlestring}`} className='linkText'>Favorite posts<span>{`(${favorites.length})`}</span></Link>}</li>
                     </ul>
                 </div>
                 <div className="content ">
