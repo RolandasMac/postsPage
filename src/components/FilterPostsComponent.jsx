@@ -30,10 +30,6 @@ const InputWraper = styled.div`
     }
 `
 
-
-// Visus postus filtruojant pagal laiką nepasikeičia limitas!!!!!!
-
-
 function FilterPostsComponent() {
     const navigate = useNavigate();
     const {posts, setLocalPosts,querryParams,setQuerryParams, setFilteredPostsCount,filteredPostsCount} = useStore();
