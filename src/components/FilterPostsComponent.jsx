@@ -30,9 +30,13 @@ const InputWraper = styled.div`
     }
 `
 
+
+// Visus postus filtruojant pagal laiką nepasikeičia limitas!!!!!!
+
+
 function FilterPostsComponent() {
     const navigate = useNavigate();
-
+    const {posts, setLocalPosts,querryParams,setQuerryParams, setFilteredPostsCount,filteredPostsCount} = useStore();
     const convertDateToTimestamp = (dateString) => {
         const date = new Date(dateString);
         const timestamp = date.getTime();
@@ -52,7 +56,7 @@ function FilterPostsComponent() {
 
         const params = {
             currentpage: "1",
-            limit: "10",
+            limit: querryParams.limit,
             skip: "0",
             username: filterData.username,
             timestampfrom: filterData.timestampfrom,
@@ -60,7 +64,7 @@ function FilterPostsComponent() {
             titlestring: filterData.titlestring
         }
         setQuerryParams(params);
-        navigate(`?skip=0&limit=10&currentpage=1&username=${filterData.username}&timestampfrom=${filterData.timestampfrom}&timestampto=${filterData.timestampto}&titlestring=${filterData.titlestring}`)
+        navigate(`?skip=0&limit=${querryParams.limit}&currentpage=1&username=${filterData.username}&timestampfrom=${filterData.timestampfrom}&timestampto=${filterData.timestampto}&titlestring=${filterData.titlestring}`)
     }
 
     function cancelfilter(e){
@@ -80,7 +84,7 @@ function FilterPostsComponent() {
         form.reset();
     }
 
-    const {posts, setLocalPosts,querryParams,setQuerryParams, setFilteredPostsCount,filteredPostsCount} = useStore();
+
 
     useEffect(() => {
 
