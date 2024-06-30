@@ -68,7 +68,7 @@ function FilterPostsComponent() {
         const form = e.currentTarget.parentElement;
         const params = {
             currentpage: "1",
-            limit: "10",
+            limit: querryParams.limit,
             skip: "0",
             username: "",
             timestampfrom: "",
@@ -76,7 +76,7 @@ function FilterPostsComponent() {
             titlestring: ""
         }
         setQuerryParams(params);
-        navigate(`?skip=0&limit=10&currentpage=1&username=&timestampfrom=&timestampto=&titlestring=`);
+        navigate(`?skip=0&limit=${querryParams.limit}&currentpage=1&username=&timestampfrom=&timestampto=&titlestring=`);
         form.reset();
     }
 
