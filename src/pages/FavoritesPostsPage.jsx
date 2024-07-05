@@ -17,6 +17,7 @@ function FavoritesPostsPage() {
                     let newFavPosts = res.data.filter((cur)=>{
                         return favorites.includes(cur.id);
                     })
+                // console.log(newFavPosts)
                     setPosts(newFavPosts);
                     setFilteredPostsCount(newFavPosts.length);
             })
@@ -25,7 +26,7 @@ function FavoritesPostsPage() {
     return (
         <div className=' d-flex flex-column gap-2'>
             <FilterPostsComponent></FilterPostsComponent>
-            {localPosts.length>=0&&<PaginationComponent filteredPostsCount={filteredPostsCount}></PaginationComponent>}
+            {<PaginationComponent filteredPostsCount={filteredPostsCount}></PaginationComponent>}
             {localPosts.map((cur, index)=>{
                 return <PostsComponent key={cur.id} post={cur}/>
             })}

@@ -84,7 +84,7 @@ function FilterPostsComponent() {
 
     useEffect(() => {
 
-        if(posts.length > 0){
+        if(posts.length >= 0){
             const newfilteredPosts = posts.filter((cur,index)=>{
                 return (
                     (querryParams.username!==""?cur.username===querryParams.username:cur)
@@ -93,6 +93,7 @@ function FilterPostsComponent() {
                     && (querryParams.timestampto!==""?cur.timestamp<=querryParams.timestampto:cur)
                 )
             })
+            // console.log(newfilteredPosts)
             setFilteredPostsCount(newfilteredPosts.length)
             let newPosts = newfilteredPosts.filter((post,index) => {
                 return index>=querryParams.skip&&index<Number(querryParams.skip)+Number(querryParams.limit);

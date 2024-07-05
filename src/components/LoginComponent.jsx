@@ -92,14 +92,14 @@ function LoginComponent(){
                             message.current.classList.add('dnone')
                             message.current.classList.remove('succmsg');
                             message.current.textContent = "";
-                        },3000)
+                        },1000)
                     }
                 })
         }else{
             form.classList.add('postFormError');
             setTimeout(()=>{
                 form.classList.remove('postFormError');
-            },3000)
+            },1000)
         }
     }
 

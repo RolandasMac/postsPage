@@ -14,13 +14,14 @@ function PostsPage() {
         http.get('http://167.99.138.67:1111/getallposts')
             .then(res => {
                 setPosts(res.data);
+                // console.log(res)
             })
     },[])
 
     return (
         <div className='d-flex flex-column gap-2'>
             <FilterPostsComponent></FilterPostsComponent>
-            {localPosts.length>0&&<PaginationComponent filteredPostsCount={filteredPostsCount}></PaginationComponent>}
+            {<PaginationComponent filteredPostsCount={filteredPostsCount}></PaginationComponent>}
             {localPosts.length>0&&localPosts.map((cur, index)=>{
                 return <PostsComponent key={index} post={cur}/>
             })}

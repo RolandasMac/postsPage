@@ -8,6 +8,7 @@ export const http = {
             try {
                 fetch(url,{method:'GET'})
                     .then(res =>{
+                        // console.log(res)
                         if (res.ok) {
                             return res.json()
                         }else{
